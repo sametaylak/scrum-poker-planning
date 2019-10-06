@@ -1,0 +1,25 @@
+$black: #23272E;
+$white: #FFFFFF;
+$gray: #CCCCCC;
+$red: #C0392B;
+
+$primary: #45C48B;
+
+.m {
+  @each $val in (0, 2, 5, 10, 15, 20, 25, 30) {
+    &-#{$val} {margin: #{$val}px !important;}
+
+    @each $dir in (top, left, bottom, right) {
+      &-#{$dir}{
+        &-#{$val} {
+          margin-#{$dir}: #{$val}px !important;
+        }
+      }
+    }
+  }
+}
+
+.f {
+  &-right { float: right; }
+  &-left  { float: left; }
+}
