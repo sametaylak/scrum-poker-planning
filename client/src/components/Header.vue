@@ -1,11 +1,13 @@
 <template>
   <header class="header">
-    <span>Scrum Poker</span>
+    <span>
+      <router-link to="/">Scrum Poker</router-link>
+    </span>
     <span v-if="isScrumPage">
       Developer Panel:
-      <a target="_blank" :href="`http://localhost:8080/view-plan-as-developer/${sessionId}`">
-        <small>http://localhost:8080/view-plan-as-developer/{{ sessionId }}</small>
-      </a>
+      <router-link :to="{ name: 'ViewPlanAsDeveloper', params: { id: sessionId } }" v-slot="{ href, route, navigate }">
+        <a target="_blank" :href="href" @click="navigate">{{ route.fullPath }}</a>
+      </router-link>
     </span>
   </header>
 </template>
