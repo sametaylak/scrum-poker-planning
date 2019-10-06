@@ -1,5 +1,7 @@
 # scrum-poker-planning
 
+[![codecov](https://codecov.io/gh/sametaylak/scrum-poker-planning/branch/master/graph/badge.svg?token=ZFqdI1QEXE)](https://codecov.io/gh/sametaylak/scrum-poker-planning)
+
 ## Project setup
 ```
 yarn install
