@@ -1,4 +1,5 @@
 # scrum-poker-planning
+Pretty straight forward scrum poker planning app.
 
 [![codecov](https://codecov.io/gh/sametaylak/scrum-poker-planning/branch/master/graph/badge.svg?token=ZFqdI1QEXE)](https://codecov.io/gh/sametaylak/scrum-poker-planning)
 
