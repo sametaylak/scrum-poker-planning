@@ -53,6 +53,13 @@ export default {
       return !!this.votes.find(v => v.who === 1)
     }
   },
+  watch: {
+    votes (newVal) {
+      if (newVal.length === 0) {
+        this.voted = false
+      }
+    }
+  },
   methods: {
     ...mapActions([
       'addVote'

@@ -37,11 +37,13 @@ app.post('/end/:sessionId/:storyId', async (req, res) => {
       status: 1
     }
   })
-  nextStory.update({
-    status: 0
-  })
-
-  res.json(nextStory)
+  if (nextStory) {
+    nextStory.update({
+      status: 0
+    })
+    res.json(nextStory)
+  }
+  res.json({ status: 'no more story' })
 })
 
 const port = process.env.PORT || 3000
