@@ -65,7 +65,13 @@ export default {
       return (this.votes[voteIdx - 1] || {}).who === 1 ? 'Scrum Master' : `Voter ${voteIdx}`
     },
     voteText (voteIdx) {
-      return (this.votes[voteIdx - 1] || {}).point || 'Not Voted'
+      const votePoint = (this.votes[voteIdx - 1] || {}).point
+
+      if (!this.isDone && votePoint) {
+        return 'Voted'
+      }
+
+      return votePoint || 'Not Voted'
     }
   },
   mounted () {
