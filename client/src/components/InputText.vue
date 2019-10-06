@@ -3,6 +3,7 @@
     <span>{{ label }}</span>
     <input
       ref="inputText"
+      v-bind="$attrs"
       :value="value"
       @input="updateInput"
     />

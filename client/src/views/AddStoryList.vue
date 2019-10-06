@@ -7,7 +7,7 @@
         </ul>
       </div>
       <div class="flex m-top-10">
-        <InputText class="flex-primary" type="text" label="Session Name" v-model="sessionName" />
+        <InputText class="flex-primary" type="text" maxlength="200" label="Session Name" v-model="sessionName" />
         <InputText class="flex-primary m-left-10" type="number" label="Number of Voters" v-model="numOfVoter" />
       </div>
       <p>Paste your story List (Each line will be converted as a story)</p>
@@ -43,6 +43,9 @@ export default {
 
       if (this.sessionName.trim() === '') {
         this.errors.push('Session name is required!')
+      }
+      if (this.sessionName.trim().length > 200) {
+        this.errors.push('Session name must be lower than 200 characters')
       }
       if (this.numOfVoter === '') {
         this.errors.push('Number of Voter is required!')
