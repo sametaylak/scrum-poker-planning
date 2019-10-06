@@ -70,7 +70,7 @@ describe('ScrumMasterPanel.vue', () => {
       who: 1
     })
 
-    expect(wrapper.findAll('span').at(0).text()).toEqual('Scrum Master: 5')
+    expect(wrapper.findAll('span').at(0).text()).toEqual('Scrum Master: Voted')
 
     getters.votes.push({
       id: 2,
@@ -79,7 +79,7 @@ describe('ScrumMasterPanel.vue', () => {
       who: 0
     })
 
-    expect(wrapper.findAll('span').at(1).text()).toEqual('Voter 2: 3')
+    expect(wrapper.findAll('span').at(1).text()).toEqual('Voter 2: Voted')
   })
 
   it('should enable button if all votes given', () => {
