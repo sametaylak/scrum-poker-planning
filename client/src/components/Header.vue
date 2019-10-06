@@ -5,8 +5,8 @@
     </span>
     <span v-if="isScrumPage">
       Developer Panel:
-      <router-link :to="{ name: 'ViewPlanAsDeveloper', params: { id: sessionId } }" v-slot="{ href, route, navigate }">
-        <a target="_blank" :href="href" @click="navigate">{{ route.fullPath }}</a>
+      <router-link :to="{ name: 'ViewPlanAsDeveloper', params: { id: sessionId } }">
+        {{ `view-plan-as-developer/${sessionId}` }}
       </router-link>
     </span>
   </header>
