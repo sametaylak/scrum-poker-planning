@@ -56,15 +56,15 @@ export default {
       })
       this.$emit('ended')
     },
+    async fetchVotes () {
+      const votes = await this.$axios.get(`votes/${this.story.id}`)
+      this.setVotes(votes.data)
+    },
     voterText (voteIdx) {
       return (this.votes[voteIdx - 1] || {}).who === 1 ? 'Scrum Master' : `Voter ${voteIdx}`
     },
     voteText (voteIdx) {
       return (this.votes[voteIdx - 1] || {}).point || 'Not Voted'
-    },
-    async fetchVotes () {
-      const votes = await this.$axios.get(`votes/${this.story.id}`)
-      this.setVotes(votes.data)
     }
   },
   mounted () {
