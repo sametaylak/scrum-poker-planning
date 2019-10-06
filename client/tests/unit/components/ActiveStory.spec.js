@@ -92,4 +92,16 @@ describe('ActiveStory.vue', () => {
       expect(getters.votes[0].who).toBe(0)
     })
   })
+
+  it('should reset if story changed', () => {
+    wrapper.vm.voted = true
+    wrapper.setProps({
+      story: {
+        id: 2,
+        storyName: 'Story #2',
+        status: 0
+      }
+    })
+    expect(wrapper.vm.voted).toEqual(false)
+  })
 })
