@@ -54,8 +54,8 @@ export default {
     }
   },
   watch: {
-    votes (newVal) {
-      if (newVal.length === 0) {
+    story (newVal, oldVal) {
+      if (newVal.id !== oldVal.id) {
         this.voted = false
       }
     }

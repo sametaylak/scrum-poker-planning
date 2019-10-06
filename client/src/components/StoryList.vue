@@ -31,7 +31,8 @@ export default {
   },
   data () {
     return {
-      stories: []
+      stories: [],
+      activeStory: null
     }
   },
   methods: {
@@ -43,6 +44,12 @@ export default {
     async fetchStories () {
       const stories = await this.$axios.get(`stories/${this.sessionId}`)
       this.stories = stories.data
+
+      const newActiveStory = this.stories.find(s => s.status === 0)
+      if (this.activeStory && newActiveStory && this.activeStory.id !== newActiveStory.id) {
+        this.$emit('activeStoryChanged')
+      }
+      this.activeStory = newActiveStory
     }
   },
   async mounted () {

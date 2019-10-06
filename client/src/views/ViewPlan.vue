@@ -4,6 +4,7 @@
       <div class="flex m-top-20">
         <StoryList
           class="flex-primary m-right-10"
+          @activeStoryChanged="fetchSession"
           :sessionId="sessionId" />
         <ActiveStory
           v-if="activeStory"
