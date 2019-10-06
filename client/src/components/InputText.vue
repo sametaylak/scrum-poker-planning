@@ -2,9 +2,9 @@
   <div class="input-text">
     <span>{{ label }}</span>
     <input
-      v-bind="$attrs"
-      v-on="$listeners"
-      v-model="val"
+      ref="inputText"
+      :value="value"
+      @input="updateInput"
     />
   </div>
 </template>
@@ -13,19 +13,17 @@
 export default {
   name: 'InputText',
   props: {
+    value: {
+      type: [String, Number]
+    },
     label: {
       type: String,
       required: true
     }
   },
-  data () {
-    return {
-      val: ''
-    }
-  },
-  watch: {
-    val () {
-      this.$emit('input', this.val)
+  methods: {
+    updateInput () {
+      this.$emit('input', this.$refs.inputText.value)
     }
   }
 }

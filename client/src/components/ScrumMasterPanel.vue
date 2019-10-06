@@ -54,6 +54,7 @@ export default {
       await this.$axios.post(`end/${this.story.sessionId}/${this.story.id}`, {
         point: this.finalScore
       })
+      this.finalScore = 0
       this.$emit('ended')
     },
     async fetchVotes () {
