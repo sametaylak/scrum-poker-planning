@@ -5,8 +5,12 @@ jest.useFakeTimers()
 
 describe('StoryList.vue', () => {
   it('renders title', () => {
+    const stubbedFn = jest.fn()
     const sessionId = 1
     const wrapper = shallowMount(StoryList, {
+      methods: {
+        fetchStories: stubbedFn
+      },
       propsData: {
         sessionId
       }
