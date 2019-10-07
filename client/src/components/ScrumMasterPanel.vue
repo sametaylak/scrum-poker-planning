@@ -35,6 +35,7 @@ export default {
   },
   data () {
     return {
+      fetchInterval: null,
       finalScore: 0
     }
   },
@@ -76,9 +77,12 @@ export default {
   },
   mounted () {
     this.fetchVotes()
-    setInterval(() => {
+    this.fetchInterval = setInterval(() => {
       this.fetchVotes()
     }, 2000)
+  },
+  destroyed () {
+    clearInterval(this.fetchInterval)
   }
 }
 </script>

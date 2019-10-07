@@ -31,6 +31,7 @@ export default {
   },
   data () {
     return {
+      fetchInterval: null,
       stories: [],
       activeStory: null
     }
@@ -54,9 +55,12 @@ export default {
   },
   async mounted () {
     this.fetchStories()
-    setInterval(() => {
+    this.fetchInterval = setInterval(() => {
       this.fetchStories()
     }, 2000)
+  },
+  destroyed () {
+    clearInterval(this.fetchInterval)
   }
 }
 </script>
