@@ -30,7 +30,7 @@ export default {
     return {
       errors: [],
       sessionName: '',
-      numOfVoter: '',
+      numOfVoter: 1,
       storyTextarea: ''
     }
   },
@@ -47,14 +47,8 @@ export default {
       if (this.sessionName.trim().length > 200) {
         this.errors.push('Session name must be lower than 200 characters')
       }
-      if (this.numOfVoter === '') {
-        this.errors.push('Number of Voter is required!')
-      }
-      if (this.numOfVoter === '0') {
-        this.errors.push('Number of Voter should greater than zero!')
-      }
-      if (!/^[0-9]*$/.exec(this.numOfVoter)) {
-        this.errors.push('Number of Voter accepts only digits!')
+      if (!/^[1-9][0-9]*$/.exec(this.numOfVoter)) {
+        this.errors.push('Invalid Number of Voters!')
       }
       if (this.storyTextarea.trim() === '') {
         this.errors.push('Stories are required!')

@@ -52,6 +52,11 @@ export default {
       'setVotes'
     ]),
     async endVoting () {
+      if (!/^[1-9][0-9]*$/.exec(this.finalScore)) {
+        alert('Invalid final score!')
+        return
+      }
+
       await this.$axios.post(`end/${this.story.sessionId}/${this.story.id}`, {
         point: this.finalScore
       })
