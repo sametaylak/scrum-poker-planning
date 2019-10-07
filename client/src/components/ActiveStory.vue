@@ -12,7 +12,8 @@
           {{ point }}
         </button>
       </div>
-      <p>{{ hasVoted ? 'You Voted!!' : 'Please Vote!!' }}</p>
+      <p v-if="votesExceeded">Votes exceeded!</p>
+      <p v-else>{{ hasVoted ? 'You Voted!!' : 'Please Vote!!' }}</p>
     </fieldset>
   </div>
 </template>
@@ -34,6 +35,7 @@ export default {
   },
   data () {
     return {
+      votesExceeded: false,
       voted: false,
       storyPoints: [
         1, 2, 3, 5,
@@ -56,6 +58,7 @@ export default {
   watch: {
     story (newVal, oldVal) {
       if (newVal.id !== oldVal.id) {
+        this.votesExceeded = false
         this.voted = false
       }
     }
@@ -83,6 +86,7 @@ export default {
         this.addVote(result.data)
         this.voted = true
       } catch (err) {
+        this.votesExceeded = true
         alert(err.response.data.error)
       }
     }
